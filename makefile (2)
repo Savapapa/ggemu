@@ -1,0 +1,5 @@
+#
+# WDK classic build environment (Windows Driver Kit, WDM)
+# Build:  set WDKROOT=... & nmake /f makefile
+#
+!INCLUDE $(NTMAKEENV)\makefile.def

@@ -1,0 +1,23 @@
+#
+# GGEmu — communication emulator of acdrv.sys (clean-room, KM<->UM 1:1)
+# WDK build: run from an elevated WDK build environment:
+#   cd build && build -cZg
+#
+TARGETNAME  = ggemu
+TARGETTYPE  = DRIVER
+TARGETPATH  = obj
+
+MSC_WARNING_LEVEL = /W4 /WX-
+
+INCLUDES = ..\km\inc;..\proto
+
+SOURCES = ..\km\ggemu.c      \
+          ..\km\pipes.c      \
+          ..\km\events.c     \
+          ..\km\regchan.c    \
+          ..\km\netcli.c     \
+          ..\km\hwid.c
+
+# The clean emulation contract: no CFG/SEH tricks, no obfuscation,
+# standard /GS is kept.
+USER_C_FLAGS = /DGGEMU_NO_NET
